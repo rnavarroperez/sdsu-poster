@@ -1,0 +1,151 @@
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+%\useoutertheme[footline=authortitle]{miniframes}
+\usecolortheme{orchid}
+
+\definecolor{sdsu_off_black}{RGB}{50, 50, 50}
+\definecolor{sdsu_red}{RGB}{166, 25, 46}
+\definecolor{offwhite}{RGB}{250, 250, 250}
+
+\setbeamercolor*{block title}{fg=white,bg=sdsu_red}
+%\setbeamercolor*{block body}{bg=normal,fg=black}
+
+
+\setbeamercolor{structure}{fg=white_black}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{item}{fg=black}
+
+\setbeamercolor{headline}{fg=white,bg=sdsu_red}
+\setbeamercolor{title in headline}{fg=white}
+\setbeamercolor{author in headline}{fg=white}
+\setbeamercolor{institute in headline}{fg=white}
+\setbeamercolor{logo in headline}{fg=black,bg=sdsu_red}
+
+\setbeamercolor{footline}{fg=white,bg=sdsu_red}
+\setbeamercolor*{normal text}{fg=black,bg=offwhite}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\setbeamercolor{upper separation line head}{fg=red}
+
+\setbeamercolor*{block body}{bg=white,fg=black}
+\setbeamerfont{block title}{size=\large,series=\bf}
+
+\def\logoleft{\setbeamertemplate{logoleft}}
+\def\insertlogoleft{\usebeamertemplate*{logoleft}}
+\def\logoright{\setbeamertemplate{logoright}}
+\def\insertlogoright{\usebeamertemplate*{logoright}}
+
+\newcommand{\event}{\@dblarg\beamer@event}
+\long\def\beamer@event[#1]#2{%
+  \def\insertevent{#2}  %
+  \def\insertshortevent{#1}%
+  }
+
+\newcommand{\email}{\@dblarg\beamer@email}
+\long\def\beamer@email[#1]#2{%
+  \def\insertemail{#2}  %
+  \def\insertshortemail{#1}%
+  }
+
+\newcommand{\website}{\@dblarg\beamer@website}
+\long\def\beamer@website[#1]#2{%
+  \def\insertwebsite{#2}  %
+  \def\insertshortwebsite{#1}%
+  }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block begin}{
+%  \vskip.75ex
+  \begin{beamercolorbox}[ht=5ex,dp=0ex,center,rounded=false,shadow=false,leftskip=1cm,colsep*=.75ex,sep=-1ex]{block title}%
+    \usebeamerfont*{block title}\Large{\insertblocktitle \vphantom{y}}
+  \end{beamercolorbox}%
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[rounded=false,shadow=false,leftskip=1cm,colsep*=.75ex,sep=2ex,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+  }
+  \setbeamertemplate{block end}{
+  \end{beamercolorbox}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{  
+  \leavevmode
+
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.15\paperwidth}
+        \begin{center}
+         \LogoOn
+         \insertlogoleft
+         \LogoOff
+         \vspace{1cm}
+        \end{center}
+      \end{column}
+%      \begin{column}{.05\paperwidth}
+%      \end{column}
+      \begin{column}{.70\paperwidth}
+%        \hskip2ex
+        \vskip4ex
+        \raggedright
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\Huge{\inserttitle}}\\[1ex]}
+        \usebeamercolor{author in headline}{\color{fg}\LARGE{\insertauthor}\\[1ex]}
+        \usebeamercolor{institute in headline}{\color{fg}\LARGE{\insertinstitute}\\[1ex]}     
+%        \vskip4ex        
+      \end{column}
+      \begin{column}{.15\paperwidth}
+        \begin{center}
+         \LogoOn
+         \insertlogoright
+         \LogoOff
+         \vspace{1cm}
+        \end{center}
+      \end{column}
+    \end{columns}
+  \end{beamercolorbox}
+
+  %% \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+  %%   \rule{0pt}{2pt}
+  %% \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+  
+  \leavevmode%
+  \begin{beamercolorbox}[ht=2cm,leftskip=1cm,rightskip=1cm]{footline}%
+    \large{\insertwebsite}
+    \hfill
+    \large{\insertemail}
+    \hfill
+    \large{\insertevent, \insertdate}
+    \vskip0.5ex
+  \end{beamercolorbox}
+  \vskip0pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+}
+
+
+\setbeamertemplate{bibliography item}[text]
+\setbeamerfont{bibliography item}{size=\small}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamerfont{bibliography entry author}{size=\small}
+
+\beamertemplatenavigationsymbolsempty
+
+\mode
+<all>
